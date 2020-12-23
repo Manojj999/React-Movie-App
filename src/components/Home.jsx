@@ -12,27 +12,14 @@ import {
   BACKDROP_SIZE,
   POSTER_SIZE,
 } from "../config";
+import { useHomeFetch } from "./Hooks/useHomeFetch";
+
 
 const Home = () => {
-    const[state , setState] =useState({movies:[]});
-    const[loading , setLoading] = useState(false);
-    const[error , setError] = useState(false);
-    console.log(state);
+   const [{state,loading,error},fetchMovies] = useHomeFetch();
+   console.log("State=>" , state )
 
-    const fetchMovies = async endpoint => {
-        setError(false);
-        setLoading(true);
 
-        // try{
-        //     const result = await (await fetch(endpoint)).json();
-            
-        // }
-        // cache(error){
-        //   console.log("error",error)
-        // }
-        // setLoading(false);
-
-    }
   return (
     <div>
       <HeroImage />
