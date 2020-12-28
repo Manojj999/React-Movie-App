@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import HeroImage from "./elements/HeroImage";
-import LoadMoreBt from "./elements/LoadMoreBt";
+import LoadMoreBtn from "./elements/LoadMoreBtn";
 import SearchBar from "./elements/SearchBar";
 import Spinner from "./elements/Spinner";
 import MovieThumb from "./elements/MovieThumb";
@@ -26,6 +26,14 @@ const Home = () => {
   ] = useHomeFetch();
   const [searchTerm, setSearchTerm] = useState("");
  
+  const loadMoreMovies = () => {
+    const searchEndPoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${currentPage + 1}`
+    const popularEndPoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${currentPage + 1}`
+
+    const endpoint = searchTerm ? searchEndPoint : popularEndPoint;
+
+    fetchMovies(endpoint);
+  }
 
   if (error) return <div>Something went Wrong</div>;
 
@@ -56,9 +64,9 @@ const Home = () => {
           />
         ))}
       </Grid>
-      <MovieThumb />
-      <Spinner />
-      <LoadMoreBt />
+      { loading && <Spinner />}
+      
+      <LoadMoreBtn text="Load More" callback={loadMoreMovies}  />
     </div>
   );
 };
