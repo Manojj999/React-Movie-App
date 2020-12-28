@@ -14,8 +14,8 @@ export const useHomeFetch = () => {
       const result = await (await fetch(endpoint)).json();
       setState((prev) => ({
         ...prev,
-        movies: [result.results],
-        heroImage: prev.heroImage, // result.results[0] =>  This will contain first hero Image of Movies
+        movies: [...result.results],
+        heroImage: prev.heroImage || result.results[0], // result.results[0] =>  This will contain first hero Image of Movies
         currentPage: result.page,
         totalPages: result.total_pages,
       }));

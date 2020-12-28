@@ -1,10 +1,15 @@
 import React from 'react';
+import { StyledGrid,StyledGridContent} from '../styles/StyledGrid'
 
-const Grid = () => {
+
+const Grid = ({header,children}) => {
     return(
-        <div>
-            <h1>Grid</h1>
-        </div>
+        <diStyledGridv>
+            <h1>{header}</h1>
+            <StyledGridContent>
+                {children}
+            </StyledGridContent>
+        </diStyledGridv>
     )
 }
 export default Grid;
