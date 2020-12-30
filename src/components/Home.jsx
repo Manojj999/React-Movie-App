@@ -6,8 +6,8 @@ import Spinner from "./elements/Spinner";
 import MovieThumb from "./elements/MovieThumb";
 import Grid from "./elements/Grid";
 import {
-  API_URL,
-  API_KEY,
+  POPULAR_BASE_URL,
+  SEARCH_BASE_URL,
   IMAGE_BASE_URL,
   BACKDROP_SIZE,
   POSTER_SIZE,
@@ -25,10 +25,19 @@ const Home = () => {
     fetchMovies,
   ] = useHomeFetch();
   const [searchTerm, setSearchTerm] = useState("");
+
+  
+  const searchMovies = (search) => {
+    const endPoint = search ? SEARCH_BASE_URL + search :POPULAR_BASE_URL;
+
+    setSearchTerm(search);
+
+    fetchMovies(endPoint)
+  }
  
   const loadMoreMovies = () => {
-    const searchEndPoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${currentPage + 1}`
-    const popularEndPoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${currentPage + 1}`
+    const searchEndPoint = `${SEARCH_BASE_URL}${searchTerm}&page=${currentPage + 1}`;
+    const popularEndPoint = `${POPULAR_BASE_URL}&page=${currentPage + 1}`;
 
     const endpoint = searchTerm ? searchEndPoint : popularEndPoint;
 
@@ -43,12 +52,15 @@ const Home = () => {
 
   return (
     <div>
+    { !searchTerm && (
       <HeroImage
         image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.backdrop_path}`}
         title={heroImage.original_title}
         text={heroImage.overview}
       />
-      <SearchBar />
+    )
+    }
+      <SearchBar callback={searchMovies} />
       <Grid header={searchTerm ? "Search Result" : "Result Movies"}>
         {movies.map((movie) => (
           <MovieThumb
