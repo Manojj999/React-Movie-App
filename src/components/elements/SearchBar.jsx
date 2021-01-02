@@ -1,5 +1,5 @@
 import React,{useState,useRef} from 'react';
-import FontAwesome from 'react-font-awesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {StyledSearchBar,StyledSearchBarContent,} from '../styles/StyledSearchBar'
 
 
@@ -22,7 +22,7 @@ const SearchBar = ({callback}) => {
     return(
         <StyledSearchBar>
             <StyledSearchBarContent>
-                <FontAwesome className="fa-search" name="search" size="2x" />
+                <FontAwesomeIcon className="fa-search" name="search" size="2x" />
                 <input 
 
                     type="text"

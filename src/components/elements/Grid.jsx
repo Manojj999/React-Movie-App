@@ -4,12 +4,12 @@ import { StyledGrid,StyledGridContent} from '../styles/StyledGrid'
 
 const Grid = ({header,children}) => {
     return(
-        <diStyledGridv>
+        <StyledGrid>
             <h1>{header}</h1>
             <StyledGridContent>
                 {children}
             </StyledGridContent>
-        </diStyledGridv>
+        </StyledGrid>
     )
 }
 export default Grid;
