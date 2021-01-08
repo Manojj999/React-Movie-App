@@ -1,5 +1,6 @@
 import React,{useState,useRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import {StyledSearchBar,StyledSearchBarContent,} from '../styles/StyledSearchBar'
 
 
@@ -24,7 +25,6 @@ const SearchBar = ({callback}) => {
             <StyledSearchBarContent>
                 <FontAwesomeIcon className="fa-search" name="search" size="2x" />
                 <input 
-
                     type="text"
                     placeholder="Search Movies"
                     onChange={doSearch}

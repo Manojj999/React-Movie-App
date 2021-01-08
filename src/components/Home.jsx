@@ -51,7 +51,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <>
     { !searchTerm && (
       <HeroImage
         image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.backdrop_path}`}
@@ -61,14 +61,14 @@ const Home = () => {
     )
     }
       <SearchBar callback={searchMovies} />
-      <Grid header={searchTerm ? "Search Result" : "Result Movies"}>
+      <Grid header={searchTerm ? "Search Result" : 'Popular Movies'}>
         {movies.map((movie) => (
           <MovieThumb
             key={movie.id}
             clickable
             image={
               movie.poster_path
-                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
                 : NoImage
             }
             movieId={movie.id}
@@ -77,9 +77,13 @@ const Home = () => {
         ))}
       </Grid>
       { loading && <Spinner />}
+
+      {currentPage < totalPages && !loading && (
+        <LoadMoreBtn text="Load More" callback={loadMoreMovies} />
+      )}
       
-      <LoadMoreBtn text="Load More" callback={loadMoreMovies}  />
-    </div>
+      
+    </>
   );
 };
 export default Home;

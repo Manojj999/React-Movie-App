@@ -14,10 +14,10 @@ export const useHomeFetch = () => {
 
     try {
       const result = await (await fetch(endpoint)).json();
-      setState((prev) => ({
+      setState(prev => ({
         ...prev,
         movies: 
-          isLoadMore !== 1
+          isLoadMore !== -1
          ? [...prev.movies, ...result.results]
          : [...result.results],
         heroImage: prev.heroImage || result.results[0], // result.results[0] =>  This will contain first hero Image of Movies
