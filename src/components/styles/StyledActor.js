@@ -3,22 +3,25 @@ import styled from 'styled-components';
 export const StyledActor = styled.div`
   font-family: 'Abel', sans-serif;
   color: #fff;
-  background: #1c1c1c;
+ 
+  background-image: linear-gradient(90deg,#f61b10,#ef0963);
   border-radius: 20px;
   padding: 5px;
   text-align: center;
+  
 
   img {
     display: block;
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     border-radius: 15px;
+    
   }
 
   .actor-name {
     display: block;
-    font-size: 18px;
+    font-size: 20px;
     margin: 10px 0 0 0;
   }
 
