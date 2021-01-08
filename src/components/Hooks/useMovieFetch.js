@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import  { useCallback, useEffect, useState } from "react";
 import { API_KEY, API_URL } from "../../config";
 // import Movie from '../movie'
 
 export const useMovieFetch = (movieId) => {
-  const [state, setState] = useState();
-  const [loading, setLoading] = useState(false);
+  const [state, setState] = useState({});
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const fetchData = useCallback(async () => {
@@ -32,7 +32,7 @@ export const useMovieFetch = (movieId) => {
     } catch (error) {
       setError(true);
     }
-    setLoading(true);
+    setLoading(false);
   }, [movieId]);
 
   useEffect(() => {

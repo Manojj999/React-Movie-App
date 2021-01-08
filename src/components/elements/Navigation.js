@@ -1,10 +1,20 @@
 import React from 'react'
+import {Link} from '@reach/router'
 
-const Navigation = () => {
+import { StyledNavigation} from '../styles/StyledNavigation'
+
+const Navigation = ({movie}) => {
     return (
-        <div>
+        <StyledNavigation>
+            <div className="navigation-content">
+                <Link to="/">
+                    <p>Home</p>
+                </Link>
+                <p> || </p>
+                <p>{movie}</p>
+            </div>
             
-        </div>
+        </StyledNavigation>
     )
 }
 
