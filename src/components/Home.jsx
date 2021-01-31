@@ -4,6 +4,7 @@ import LoadMoreBtn from "./elements/LoadMoreBtn";
 import SearchBar from "./elements/SearchBar";
 import Spinner from "./elements/Spinner";
 import MovieThumb from "./elements/MovieThumb";
+
 import Grid from "./elements/Grid";
 import {
   POPULAR_BASE_URL,
@@ -14,6 +15,7 @@ import {
 } from "../config";
 import { useHomeFetch } from "./Hooks/useHomeFetch";
 import NoImage from "./images/no_image.jpg";
+import NotFound from "./NotFound";
 
 const Home = () => {
   const [
@@ -44,7 +46,7 @@ const Home = () => {
     fetchMovies(endpoint);
   }
 
-  if (error) return <div>Something went Wrong</div>;
+  if (error) return <NotFound />;
 
   if (!movies[0]) {
     return <Spinner />;

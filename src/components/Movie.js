@@ -10,13 +10,15 @@ import Navigation from "./elements/Navigation";
 import Spinner from "./elements/Spinner";
 //import { useHomeFetch } from './Hooks/useHomeFetch';
 
+
 import { useMovieFetch } from "./Hooks/useMovieFetch";
+import NotFound from "./NotFound";
 
 const Movie = ({ movieId }) => {
   const [movie, loading, error] = useMovieFetch(movieId);
   console.log("Movie ==> ", movie);
 
-  if (error) return <div>Something Went Wrong ...</div>;
+  if (error) return <NotFound />;
 
   if (loading) return <Spinner />;
 

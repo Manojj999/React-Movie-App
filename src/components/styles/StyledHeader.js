@@ -30,13 +30,15 @@ export const StyledRMDBLogo = styled.img`
 `;
 
 export const StyledTMDBLogo = styled.img`
-  width: 122px;
-  margin-top: 25px;
+  width: 105px;
+  margin-top:0px;
   float: right;
+  padding-bottom:20px;
 
   @media screen and (max-width: 500px) {
     display: inline-block;
-    width: 80px;
+    width: 50px;
     margin-top: 0px;
+    margin-bottom:0px;
   }
 `;
