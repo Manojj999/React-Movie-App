@@ -4,8 +4,7 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 import PropTypes from 'prop-types';
 import MovieThumb from "./MovieThumb";
 import { StyledMovieInfo } from "../styles/StyledMovieInfo";
-//import { element } from 'prop-types'
-//import Movie from '../Movie'
+
 
 const MovieInfo = ({ movie }) => {
   return (

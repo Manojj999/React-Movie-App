@@ -8,15 +8,12 @@ import MovieInfo from "./elements/MovieInfo";
 import MovieInfoBar from "./elements/MovieInfoBar";
 import Navigation from "./elements/Navigation";
 import Spinner from "./elements/Spinner";
-//import { useHomeFetch } from './Hooks/useHomeFetch';
-
 
 import { useMovieFetch } from "./Hooks/useMovieFetch";
 import NotFound from "./NotFound";
 
 const Movie = ({ movieId }) => {
   const [movie, loading, error] = useMovieFetch(movieId);
-  console.log("Movie ==> ", movie);
 
   if (error) return <NotFound />;
 
@@ -26,18 +23,15 @@ const Movie = ({ movieId }) => {
     <>
       <Navigation movie={movie.original_title} />
       <MovieInfo movie={movie} />
-      <MovieInfoBar 
+      <MovieInfoBar
         time={movie.runtime}
         budget={movie.budget}
         revenue={movie.revenue}
-
-
-       />
-      <Grid header="Actors">
-      {movie.actors.map(actor =>  (
-        <Actor key={actor.credit_id} actor={actor} />
-      ))}
-        
+      />
+      <Grid header='Actors'>
+        {movie.actors.map((actor) => (
+          <Actor key={actor.credit_id} actor={actor} />
+        ))}
       </Grid>
     </>
   );

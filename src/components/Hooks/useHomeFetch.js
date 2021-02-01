@@ -33,20 +33,15 @@ export const useHomeFetch = (searchTerm) => {
 
   useEffect(() => {
     if (sessionStorage.homeState) {
-      // console.log("grabing from Session Storage")
-
       setState(JSON.parse(sessionStorage.homeState));
       setLoading(false);
     } else {
-      //console.log("grabing from Api")
-
       fetchMovies(POPULAR_BASE_URL);
     }
   }, []);
 
   useEffect(() => {
     if (!searchTerm) {
-      console.log("writing to Session Storage");
       sessionStorage.setItem("homeState", JSON.stringify(state)); // pass name of state that persist in session storage
     }
   }, [searchTerm, state]);
