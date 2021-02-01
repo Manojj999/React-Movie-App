@@ -1,4 +1,4 @@
-import  { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { API_KEY, API_URL } from "../../config";
 // import Movie from '../movie'
 
@@ -22,13 +22,11 @@ export const useMovieFetch = (movieId) => {
         (member) => member.job === "Director"
       );
 
-      setState(
-        {
-          ...result,
-          actors: creditResult.cast,
-          directors,
-        }
-      );
+      setState({
+        ...result,
+        actors: creditResult.cast,
+        directors,
+      });
     } catch (error) {
       setError(true);
     }
@@ -36,8 +34,17 @@ export const useMovieFetch = (movieId) => {
   }, [movieId]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    if (localStorage[movieId]) {
+      setState(JSON.parse(localStorage[movieId]));
+      setLoading(false);
+    } else {
+      fetchData();
+    }
+  }, [fetchData, movieId]);
+
+  useEffect(() => {
+    localStorage.setItem(movieId, JSON.stringify(state));
+  }, [movieId, state]);
 
   return [state, loading, error];
 };

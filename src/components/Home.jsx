@@ -18,6 +18,7 @@ import NoImage from "./images/no_image.jpg";
 import NotFound from "./NotFound";
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [
     {
       state: { movies, currentPage, totalPages, heroImage },
@@ -25,8 +26,7 @@ const Home = () => {
       error,
     },
     fetchMovies,
-  ] = useHomeFetch();
-  const [searchTerm, setSearchTerm] = useState("");
+  ] = useHomeFetch(searchTerm);
 
   
   const searchMovies = (search) => {
